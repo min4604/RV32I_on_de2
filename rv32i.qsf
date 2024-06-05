@@ -1,0 +1,136 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2022  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+# Date created = 16:43:22  May 14, 2024
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		rv32i_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY rv32i
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:43:22  MAY 14, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION 14.1.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name BDF_FILE rv32i.bdf
+set_global_assignment -name VERILOG_FILE MUX2to1_32bit.v
+set_global_assignment -name VERILOG_FILE MUX4to1_32bit.v
+set_global_assignment -name VERILOG_FILE alu.v
+set_global_assignment -name VERILOG_FILE branch.v
+set_global_assignment -name VERILOG_FILE decoder.v
+set_global_assignment -name VERILOG_FILE dm_control.v
+set_global_assignment -name VERILOG_FILE instr_memory.v
+set_global_assignment -name TEXT_FILE test_instructions.txt
+set_global_assignment -name VERILOG_FILE pc.v
+set_global_assignment -name VERILOG_FILE regster.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE debonce.v
+set_global_assignment -name VERILOG_FILE showpc.v
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_Y2 -to clk
+set_location_assignment PIN_M23 -to key
+set_location_assignment PIN_R24 -to res
+set_location_assignment PIN_AA17 -to segA[6]
+set_location_assignment PIN_AB16 -to segA[5]
+set_location_assignment PIN_AA16 -to segA[4]
+set_location_assignment PIN_AB17 -to segA[3]
+set_location_assignment PIN_AB15 -to segA[2]
+set_location_assignment PIN_AA15 -to segA[1]
+set_location_assignment PIN_AC17 -to segA[0]
+set_location_assignment PIN_AD17 -to segB[6]
+set_location_assignment PIN_AE17 -to segB[5]
+set_location_assignment PIN_AG17 -to segB[4]
+set_location_assignment PIN_AH17 -to segB[3]
+set_location_assignment PIN_AF17 -to segB[2]
+set_location_assignment PIN_AG18 -to segB[1]
+set_location_assignment PIN_AA14 -to segB[0]
+set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_global_assignment -name VERILOG_FILE LCD_Controller.v
+set_global_assignment -name VERILOG_FILE regshow.v
+set_location_assignment PIN_M5 -to LCD_DATA[7]
+set_location_assignment PIN_M3 -to LCD_DATA[6]
+set_location_assignment PIN_K2 -to LCD_DATA[5]
+set_location_assignment PIN_K1 -to LCD_DATA[4]
+set_location_assignment PIN_K7 -to LCD_DATA[3]
+set_location_assignment PIN_L2 -to LCD_DATA[2]
+set_location_assignment PIN_L1 -to LCD_DATA[1]
+set_location_assignment PIN_L3 -to LCD_DATA[0]
+set_location_assignment PIN_L4 -to LCD_EN
+set_location_assignment PIN_M2 -to LCD_RS
+set_location_assignment PIN_M1 -to LCD_RW
+set_location_assignment PIN_G18 -to mem0[31]
+set_location_assignment PIN_F22 -to mem0[30]
+set_location_assignment PIN_E17 -to mem0[29]
+set_location_assignment PIN_L26 -to mem0[28]
+set_location_assignment PIN_L25 -to mem0[27]
+set_location_assignment PIN_J22 -to mem0[26]
+set_location_assignment PIN_H22 -to mem0[25]
+set_location_assignment PIN_G16 -to mem0[24]
+set_location_assignment PIN_G15 -to mem0[23]
+set_location_assignment PIN_F15 -to mem0[22]
+set_location_assignment PIN_H17 -to mem0[21]
+set_location_assignment PIN_J16 -to mem0[20]
+set_location_assignment PIN_H16 -to mem0[19]
+set_location_assignment PIN_J15 -to mem0[18]
+set_location_assignment PIN_G17 -to mem0[17]
+set_location_assignment PIN_J17 -to mem0[16]
+set_location_assignment PIN_H19 -to mem0[15]
+set_location_assignment PIN_J19 -to mem0[14]
+set_location_assignment PIN_E18 -to mem0[13]
+set_location_assignment PIN_F18 -to mem0[12]
+set_location_assignment PIN_F21 -to mem0[11]
+set_location_assignment PIN_E19 -to mem0[10]
+set_location_assignment PIN_F19 -to mem0[9]
+set_location_assignment PIN_G19 -to mem0[8]
+set_location_assignment PIN_G21 -to mem0[7]
+set_location_assignment PIN_G22 -to mem0[6]
+set_location_assignment PIN_G20 -to mem0[5]
+set_location_assignment PIN_H21 -to mem0[4]
+set_location_assignment PIN_E24 -to mem0[3]
+set_location_assignment PIN_E25 -to mem0[2]
+set_location_assignment PIN_E22 -to mem0[1]
+set_location_assignment PIN_E21 -to mem0[0]
+set_location_assignment PIN_AC28 -to mode[1]
+set_location_assignment PIN_AB28 -to mode[0]
+set_global_assignment -name CDF_FILE output_files/Chain2.cdf
+set_global_assignment -name MIF_FILE inmem1.mif
+set_global_assignment -name QIP_FILE inmem.qip
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

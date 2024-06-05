@@ -1,0 +1,18 @@
+module debonce(
+	input clk,
+	input key,
+	output keyout
+);
+
+reg [25:1] div;
+reg [3:0] count;
+
+always @ (posedge clk) begin
+	div = div + 1'b1;
+end
+
+always @ (posedge div[18]) begin
+	if(key == 0) begin
+		
+	
+endmodule

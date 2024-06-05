@@ -1,0 +1,285 @@
+module	regshow(	
+input	iCLK,
+input	iRST_N,
+output	[7:0]LCD_DATA,
+output	LCD_RW,
+output	LCD_EN,
+output	LCD_RS,
+inout [1:0]wordsw,
+input clo,
+input flashing,
+input keded
+
+);
+
+//	Internal Wires/Registers
+reg	[5:0]	LUT_INDEX;
+reg	[8:0]	LUT_DATA;
+reg	[5:0]	mLCD_ST;
+reg	[17:0]	mDLY;
+reg			mLCD_Start;
+reg	[7:0]	mLCD_DATA;
+reg			mLCD_RS;
+wire		mLCD_Done;
+reg ress;
+reg [18:0] div;
+reg [ 4:0] delay_res;
+reg	[19:0]	Cont;
+wire resa;
+parameter	LUT_SIZE	=	39;//LCD_LINE	+32+1;
+
+always@(posedge iCLK)
+begin
+	if(!resa)
+	begin
+		LUT_INDEX	<=	0;
+		mLCD_ST		<=	0;
+		mDLY		<=	0;
+		mLCD_Start	<=	0;
+		mLCD_DATA	<=	0;
+		mLCD_RS		<=	0;
+	end
+	else
+	begin
+		if(LUT_INDEX<LUT_SIZE)
+		begin
+			case(mLCD_ST)
+			0:	begin
+					mLCD_DATA	<=	LUT_DATA[7:0];
+					mLCD_RS		<=	LUT_DATA[8];
+					mLCD_Start	<=	1;
+					mLCD_ST		<=	1;
+				end
+			1:	begin
+					if(mLCD_Done)
+					begin
+						mLCD_Start	<=	0;
+						mLCD_ST		<=	2;					
+					end
+				end
+			2:	begin
+					if(mDLY<18'h3FFFE)
+					mDLY	<=	mDLY+1;
+					else
+					begin
+						mDLY	<=	0;
+						mLCD_ST	<=	3;
+					end
+				end
+			3:	begin
+					LUT_INDEX	<=	LUT_INDEX+1;
+					mLCD_ST	<=	0;
+				end
+			endcase
+		end
+	end
+end
+
+
+always@(posedge iCLK) begin
+if (!flashing) begin
+	case(LUT_INDEX)
+	 1:	LUT_DATA	<=	9'h038;
+	 2:	LUT_DATA	<=	9'h00C;
+	 3:	LUT_DATA	<=	9'h001;
+	 4:	LUT_DATA	<=	9'h006;
+	 5:	LUT_DATA	<=	9'h080;
+	 6:	LUT_DATA	<=	9'h120;// 
+	 7:	LUT_DATA	<=	9'h120;//F
+	 8:	LUT_DATA	<=	9'h120;//L
+	 9:	LUT_DATA	<=	9'h120;//A
+	10:	LUT_DATA	<=	9'h120;//S
+    11:	LUT_DATA	<=	9'h120;//H
+    12:	LUT_DATA	<=	9'h120;// 
+	13:	LUT_DATA	<=	9'h120;// 
+	14:	LUT_DATA	<=	9'h120;// 
+	15:	LUT_DATA	<=	9'h120;//W
+	16:	LUT_DATA	<=	9'h120;//R
+	17:	LUT_DATA	<=	9'h120;//I
+	18:	LUT_DATA	<=	9'h120;//T
+	19:	LUT_DATA	<=	9'h120;//E
+	20:	LUT_DATA	<=	9'h120;//R
+	21:	LUT_DATA	<=	9'h120;// 
+
+	22:	LUT_DATA	<=	9'h0c0;
+	
+	23:	LUT_DATA	<=	9'h120;// 
+	24:	LUT_DATA	<=	9'h120;//F
+	25:	LUT_DATA	<=	9'h120;//L
+	26:	LUT_DATA	<=	9'h120;//A
+	27:	LUT_DATA	<=	9'h120;//S
+   28:	LUT_DATA	<=	9'h120;//H
+   29:	LUT_DATA	<=	9'h120;// 
+	30:	LUT_DATA	<=	9'h120;// 
+	31:	LUT_DATA	<=	9'h120;// 
+	32:	LUT_DATA	<=	9'h120;//W
+	33:	LUT_DATA	<=	9'h120;//R
+	34:	LUT_DATA	<=	9'h120;//I
+	35:	LUT_DATA	<=	9'h120;//T
+	36:	LUT_DATA	<=	9'h120;//E
+	37:	LUT_DATA	<=	9'h120;//R
+	38:	LUT_DATA	<=	9'h120;// 
+	endcase	
+end else	 begin
+	case(wordsw)
+		0 : begin
+			case(LUT_INDEX)
+			//	Initial
+				 1:	LUT_DATA	<=	9'h038;
+				 2:	LUT_DATA	<=	9'h00C;
+				 3:	LUT_DATA	<=	9'h002;
+				 4:	LUT_DATA	<=	9'h006;
+				 5:	LUT_DATA	<=	9'h080;
+				 6:	LUT_DATA	<=	(clo)? 9'h00c : 9'h0c0;//R
+				 7:	LUT_DATA	<=	9'h120;	//	Welcome to the
+				 8:	LUT_DATA	<=	9'h157;
+				 9:	LUT_DATA	<=	9'h165;
+				10:	LUT_DATA	<=	9'h16C;
+				11:	LUT_DATA	<=	9'h163;
+				12:	LUT_DATA	<=	9'h16F;
+				13:	LUT_DATA	<=	9'h16D;
+				14:	LUT_DATA	<=	9'h165;
+				15:	LUT_DATA	<=	9'h120;
+				16:	LUT_DATA	<=	9'h174;
+				17:	LUT_DATA	<=	9'h16F;
+				18:	LUT_DATA	<=	9'h120;
+				19:	LUT_DATA	<=	9'h174;
+				20:	LUT_DATA	<=	9'h168;
+				21:	LUT_DATA	<=	9'h165;
+				22:	LUT_DATA	<=	9'h120;
+				default : LUT_DATA	<=	9'h120;
+						
+			endcase
+		end
+		1 : begin
+			case(LUT_INDEX)
+			//	Initial
+				1:	LUT_DATA	<=	9'h038;
+				 2:	LUT_DATA	<=	9'h00C;
+				 3:	LUT_DATA	<=	9'h002;
+				 4:	LUT_DATA	<=	9'h006;
+				 5:	LUT_DATA	<=	9'h080;
+				 6:	LUT_DATA	<=	(clo)? 9'h00c : 9'h0c0;//R
+				 7:	LUT_DATA	<=	9'h120;	//	Altera DE2-70
+				 8:	LUT_DATA	<=	9'h141;	
+				 9:	LUT_DATA	<=	9'h16C;
+				10:	LUT_DATA	<=	9'h174;
+				11:	LUT_DATA	<=	9'h165;
+				12:	LUT_DATA	<=	9'h172;
+				13:	LUT_DATA	<=	9'h161;
+				14:	LUT_DATA	<=	9'h120;
+				15:	LUT_DATA	<=	9'h144;
+				16:	LUT_DATA	<=	9'h145;
+				17:	LUT_DATA	<=	9'h132;
+				18:	LUT_DATA	<=	9'h1B0;
+				19:	LUT_DATA	<=	9'h131;
+				20:	LUT_DATA	<=	9'h131;
+				21:	LUT_DATA	<=	9'h135;
+				22:	LUT_DATA	<=	9'h120;
+				default : LUT_DATA	<=	9'h120;
+			
+			endcase
+		end
+		2 : begin
+			case(LUT_INDEX)
+			//	Initial
+			 1:	LUT_DATA	<=	9'h038;
+				 2:	LUT_DATA	<=	9'h00C;
+				 3:	LUT_DATA	<=	9'h002;
+				 4:	LUT_DATA	<=	9'h006;
+				 5:	LUT_DATA	<=	9'h080;
+				 6:	LUT_DATA	<=	(clo)? 9'h00c : 9'h0c0;//R
+				 7:	LUT_DATA	<=	9'h120;	//	Welcome to the
+				 8:	LUT_DATA	<=	9'h148;
+				 9:	LUT_DATA	<=	9'h165;
+				10:	LUT_DATA	<=	9'h14c;
+				11:	LUT_DATA	<=	9'h14c;
+				12:	LUT_DATA	<=	9'h16f;
+				13:	LUT_DATA	<=	9'h120;
+				14:	LUT_DATA	<=	9'h157;
+				15:	LUT_DATA	<=	9'h16f;
+				16:	LUT_DATA	<=	9'h172;
+				17:	LUT_DATA	<=	9'h164;
+				18:	LUT_DATA	<=	9'h120;
+				19:	LUT_DATA	<=	9'h120;
+				20:	LUT_DATA	<=	9'h120;
+				21:	LUT_DATA	<=	9'h120;
+				22:	LUT_DATA	<=	9'h120;
+				default : LUT_DATA	<=	9'h120;
+			
+			endcase
+		end
+		3 : begin
+			case(LUT_INDEX)
+			//	Initial
+			 1:	LUT_DATA	<=	9'h038;
+				 2:	LUT_DATA	<=	9'h00C;
+				 3:	LUT_DATA	<=	9'h002;
+				 4:	LUT_DATA	<=	9'h006;
+				 5:	LUT_DATA	<=	9'h080;
+				 6:	LUT_DATA	<=	(clo)? 9'h00c : 9'h0c0;//R
+				 7:	LUT_DATA	<=	9'h120;	//	Welcome to the
+				 8:	LUT_DATA	<=	9'h131;
+				 9:	LUT_DATA	<=	9'h131;
+				10:	LUT_DATA	<=	9'h130;
+				11:	LUT_DATA	<=	9'h133;
+				12:	LUT_DATA	<=	9'h136;
+				13:	LUT_DATA	<=	9'h130;
+				14:	LUT_DATA	<=	9'h132;
+				15:	LUT_DATA	<=	9'h130;
+				16:	LUT_DATA	<=	9'h134;
+				17:	LUT_DATA	<=	9'h120;
+				18:	LUT_DATA	<=	9'h120;
+				19:	LUT_DATA	<=	9'h120;
+				20:	LUT_DATA	<=	9'h120;
+				21:	LUT_DATA	<=	9'h120;
+				22:	LUT_DATA	<=	9'h120;
+				default : LUT_DATA	<=	9'h120;
+			
+			endcase
+		end
+	endcase
+	end
+end
+
+always @ (posedge iCLK ) begin
+	div = div+1;
+end
+
+
+
+always@(posedge iCLK)
+begin
+	if(!flashing) begin
+		if(Cont!=20'hFFFFF)
+		begin
+			Cont	<=	Cont+1;
+			ress	<=	1'b0;
+		end
+		else begin
+		ress	<=	1'b1;
+		end
+	end else begin
+		Cont <= 0;
+		ress	<=	1'b1;
+	end
+		
+		
+end
+
+assign resa = ress & iRST_N;
+
+LCD_Controller 		u0	(	//	Host Side
+							.iDATA(mLCD_DATA),
+							.iRS(mLCD_RS),
+							.iStart(mLCD_Start),
+							.oDone(mLCD_Done),
+							.iCLK(iCLK),
+							.iRST_N(resa),
+							//	LCD Interface
+							.LCD_DATA(LCD_DATA),
+							.LCD_RW(LCD_RW),
+							.LCD_EN(LCD_EN),
+							.LCD_RS(LCD_RS)	);
+
+endmodule

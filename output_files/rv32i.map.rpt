@@ -1,0 +1,1749 @@
+Analysis & Synthesis report for rv32i
+Wed Jun 05 10:05:07 2024
+Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |rv32i|regshow:inst14|mLCD_ST
+  9. State Machine - |rv32i|regshow:inst14|LCD_Controller:u0|ST
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: regshow:inst14
+ 15. Parameter Settings for User Entity Instance: regshow:inst14|LCD_Controller:u0
+ 16. Parameter Settings for Inferred Entity Instance: showpc:inst10|lpm_divide:Mod0
+ 17. Parameter Settings for Inferred Entity Instance: showpc:inst10|lpm_divide:Div0
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jun 05 10:05:07 2024      ;
+; Quartus II 64-Bit Version          ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
+; Revision Name                      ; rv32i                                      ;
+; Top-level Entity Name              ; rv32i                                      ;
+; Family                             ; Cyclone IV E                               ;
+; Total logic elements               ; 2,744                                      ;
+;     Total combinational functions  ; 2,391                                      ;
+;     Dedicated logic registers      ; 610                                        ;
+; Total registers                    ; 610                                        ;
+; Total pins                         ; 62                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; rv32i              ; rv32i              ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 6           ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-6         ; < 0.1%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                 ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------+---------+
+; rv32i.bdf                        ; yes             ; User Block Diagram/Schematic File  ; C:/Users/user/Desktop/test/rv32i/rv32i.bdf                         ;         ;
+; MUX2to1_32bit.v                  ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/MUX2to1_32bit.v                   ;         ;
+; MUX4to1_32bit.v                  ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/MUX4to1_32bit.v                   ;         ;
+; alu.v                            ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/alu.v                             ;         ;
+; branch.v                         ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/branch.v                          ;         ;
+; decoder.v                        ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/decoder.v                         ;         ;
+; dm_control.v                     ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/dm_control.v                      ;         ;
+; instr_memory.v                   ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/instr_memory.v                    ;         ;
+; test_instructions.txt            ; yes             ; User File                          ; C:/Users/user/Desktop/test/rv32i/test_instructions.txt             ;         ;
+; pc.v                             ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/pc.v                              ;         ;
+; regster.v                        ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/regster.v                         ;         ;
+; debonce.v                        ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/debonce.v                         ;         ;
+; showpc.v                         ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/showpc.v                          ;         ;
+; LCD_Controller.v                 ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/LCD_Controller.v                  ;         ;
+; regshow.v                        ; yes             ; User Verilog HDL File              ; C:/Users/user/Desktop/test/rv32i/regshow.v                         ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal141.inc                   ; yes             ; Megafunction                       ; c:/altera/14.1/quartus/libraries/megafunctions/aglobal141.inc      ;         ;
+; db/lpm_divide_1bm.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/lpm_divide_1bm.tdf             ;         ;
+; db/sign_div_unsign_mlh.tdf       ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/sign_div_unsign_mlh.tdf        ;         ;
+; db/alt_u_div_07f.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/alt_u_div_07f.tdf              ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/add_sub_7pc.tdf                ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/add_sub_8pc.tdf                ;         ;
+; db/lpm_divide_uim.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/Users/user/Desktop/test/rv32i/db/lpm_divide_uim.tdf             ;         ;
++----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                        ;
++---------------------------------------------+----------------------+
+; Resource                                    ; Usage                ;
++---------------------------------------------+----------------------+
+; Estimated Total logic elements              ; 2,744                ;
+;                                             ;                      ;
+; Total combinational functions               ; 2391                 ;
+; Logic element usage by number of LUT inputs ;                      ;
+;     -- 4 input functions                    ; 1136                 ;
+;     -- 3 input functions                    ; 668                  ;
+;     -- <=2 input functions                  ; 587                  ;
+;                                             ;                      ;
+; Logic elements by mode                      ;                      ;
+;     -- normal mode                          ; 1921                 ;
+;     -- arithmetic mode                      ; 470                  ;
+;                                             ;                      ;
+; Total registers                             ; 610                  ;
+;     -- Dedicated logic registers            ; 610                  ;
+;     -- I/O registers                        ; 0                    ;
+;                                             ;                      ;
+; I/O pins                                    ; 62                   ;
+;                                             ;                      ;
+; Embedded Multiplier 9-bit elements          ; 0                    ;
+;                                             ;                      ;
+; Maximum fan-out node                        ; debonce:inst2|keyout ;
+; Maximum fan-out                             ; 478                  ;
+; Total fan-out                               ; 9583                 ;
+; Average fan-out                             ; 3.07                 ;
++---------------------------------------------+----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                  ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+--------------+
+; |rv32i                                    ; 2391 (0)          ; 610 (0)      ; 0           ; 0            ; 0       ; 0         ; 62   ; 0            ; |rv32i                                                                                                               ; work         ;
+;    |MUX2to1_32bit:inst5|                  ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|MUX2to1_32bit:inst5                                                                                           ; work         ;
+;    |MUX2to1_32bit:inst6|                  ; 41 (41)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|MUX2to1_32bit:inst6                                                                                           ; work         ;
+;    |MUX4to1_32bit:inst9|                  ; 64 (64)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|MUX4to1_32bit:inst9                                                                                           ; work         ;
+;    |alu:inst8|                            ; 425 (425)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|alu:inst8                                                                                                     ; work         ;
+;    |debonce:inst2|                        ; 22 (22)           ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|debonce:inst2                                                                                                 ; work         ;
+;    |decoder:inst4|                        ; 25 (25)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|decoder:inst4                                                                                                 ; work         ;
+;    |dm_control:inst12|                    ; 296 (241)         ; 256 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|dm_control:inst12                                                                                             ; work         ;
+;       |mem:mem_U|                         ; 55 (55)           ; 256 (256)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|dm_control:inst12|mem:mem_U                                                                                   ; work         ;
+;    |instr_memory:inst11|                  ; 26 (26)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|instr_memory:inst11                                                                                           ; work         ;
+;    |pc:inst|                              ; 62 (62)           ; 62 (62)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|pc:inst                                                                                                       ; work         ;
+;    |regshow:inst14|                       ; 393 (372)         ; 110 (97)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|regshow:inst14                                                                                                ; work         ;
+;       |LCD_Controller:u0|                 ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|regshow:inst14|LCD_Controller:u0                                                                              ; work         ;
+;    |regster:inst3|                        ; 304 (304)         ; 160 (160)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|regster:inst3                                                                                                 ; work         ;
+;    |showpc:inst10|                        ; 701 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10                                                                                                 ; work         ;
+;       |lpm_divide:Div0|                   ; 342 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_uim:auto_generated|  ; 342 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Div0|lpm_divide_uim:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_mlh:divider| ; 342 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Div0|lpm_divide_uim:auto_generated|sign_div_unsign_mlh:divider                       ; work         ;
+;                |alt_u_div_07f:divider|    ; 342 (342)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Div0|lpm_divide_uim:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_07f:divider ; work         ;
+;       |lpm_divide:Mod0|                   ; 345 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Mod0                                                                                 ; work         ;
+;          |lpm_divide_1bm:auto_generated|  ; 345 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Mod0|lpm_divide_1bm:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_mlh:divider| ; 345 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Mod0|lpm_divide_1bm:auto_generated|sign_div_unsign_mlh:divider                       ; work         ;
+;                |alt_u_div_07f:divider|    ; 345 (345)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|lpm_divide:Mod0|lpm_divide_1bm:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_07f:divider ; work         ;
+;       |segdec:segAA|                      ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|segdec:segAA                                                                                    ; work         ;
+;       |segdec:segBB|                      ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |rv32i|showpc:inst10|segdec:segBB                                                                                    ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |rv32i|regshow:inst14|mLCD_ST                                      ;
++----------------+----------------+----------------+----------------+----------------+
+; Name           ; mLCD_ST.000011 ; mLCD_ST.000010 ; mLCD_ST.000001 ; mLCD_ST.000000 ;
++----------------+----------------+----------------+----------------+----------------+
+; mLCD_ST.000000 ; 0              ; 0              ; 0              ; 0              ;
+; mLCD_ST.000001 ; 0              ; 0              ; 1              ; 1              ;
+; mLCD_ST.000010 ; 0              ; 1              ; 0              ; 1              ;
+; mLCD_ST.000011 ; 1              ; 0              ; 0              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------+
+; State Machine - |rv32i|regshow:inst14|LCD_Controller:u0|ST ;
++-------+-------+-------+-------+----------------------------+
+; Name  ; ST.11 ; ST.10 ; ST.01 ; ST.00                      ;
++-------+-------+-------+-------+----------------------------+
+; ST.00 ; 0     ; 0     ; 0     ; 0                          ;
+; ST.01 ; 0     ; 0     ; 1     ; 1                          ;
+; ST.10 ; 0     ; 1     ; 0     ; 1                          ;
+; ST.11 ; 1     ; 0     ; 0     ; 1                          ;
++-------+-------+-------+-------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                   ;
++-----------------------------------------------------+------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal    ; Free of Timing Hazards ;
++-----------------------------------------------------+------------------------+------------------------+
+; dm_control:inst12|data_in_buff[31]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[30]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[29]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[28]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[27]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[26]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[25]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[24]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[23]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[22]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[21]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[20]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[19]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[18]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[17]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[16]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[15]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[14]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[13]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[12]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[11]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[10]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[9]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[8]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[7]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[6]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[5]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[4]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[3]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[2]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[1]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_in_buff[0]                   ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[6]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[4]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[3]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[0]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[5]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[1]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[2]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[30]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[29]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[28]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[27]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[26]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[25]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[16]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[17]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[12]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[19]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[18]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[13]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[14]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[15]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[31]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[11]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[10]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[9]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[8]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[7]                  ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[24]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[23]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[22]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[21]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; dm_control:inst12|data_out_buff[20]                 ; decoder:inst4|Decoder0 ; yes                    ;
+; Number of user-specified and inferred latches = 64  ;                        ;                        ;
++-----------------------------------------------------+------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; pc:inst|pc_next[1]                      ; Merged with pc:inst|pc[1]                   ;
+; pc:inst|pc_next[0]                      ; Merged with pc:inst|pc[0]                   ;
+; regshow:inst14|div[0]                   ; Merged with debonce:inst2|div[1]            ;
+; regshow:inst14|div[1]                   ; Merged with debonce:inst2|div[2]            ;
+; regshow:inst14|div[2]                   ; Merged with debonce:inst2|div[3]            ;
+; regshow:inst14|div[3]                   ; Merged with debonce:inst2|div[4]            ;
+; regshow:inst14|div[4]                   ; Merged with debonce:inst2|div[5]            ;
+; regshow:inst14|div[5]                   ; Merged with debonce:inst2|div[6]            ;
+; regshow:inst14|div[6]                   ; Merged with debonce:inst2|div[7]            ;
+; regshow:inst14|div[7]                   ; Merged with debonce:inst2|div[8]            ;
+; regshow:inst14|div[8]                   ; Merged with debonce:inst2|div[9]            ;
+; regshow:inst14|div[9]                   ; Merged with debonce:inst2|div[10]           ;
+; regshow:inst14|div[10]                  ; Merged with debonce:inst2|div[11]           ;
+; regshow:inst14|div[11]                  ; Merged with debonce:inst2|div[12]           ;
+; regshow:inst14|div[12]                  ; Merged with debonce:inst2|div[13]           ;
+; regshow:inst14|div[13]                  ; Merged with debonce:inst2|div[14]           ;
+; regshow:inst14|div[14]                  ; Merged with debonce:inst2|div[15]           ;
+; regshow:inst14|div[15]                  ; Merged with debonce:inst2|div[16]           ;
+; regshow:inst14|div[16]                  ; Merged with debonce:inst2|div[17]           ;
+; regshow:inst14|mLCD_ST~6                ; Lost fanout                                 ;
+; regshow:inst14|mLCD_ST~7                ; Lost fanout                                 ;
+; regshow:inst14|mLCD_ST~8                ; Lost fanout                                 ;
+; regshow:inst14|mLCD_ST~9                ; Lost fanout                                 ;
+; regshow:inst14|mLCD_ST~10               ; Lost fanout                                 ;
+; regshow:inst14|mLCD_ST~11               ; Lost fanout                                 ;
+; regshow:inst14|LCD_Controller:u0|ST~8   ; Lost fanout                                 ;
+; regshow:inst14|LCD_Controller:u0|ST~9   ; Lost fanout                                 ;
+; regster:inst3|regfile~518               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~550               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~582               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~614               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~646               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~678               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~710               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~742               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~774               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~806               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~838               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~870               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~902               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~934               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~966               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~998               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~517               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~549               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~581               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~613               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~645               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~677               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~709               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~741               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~773               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~805               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~837               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~869               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~901               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~933               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~965               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~997               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~512               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~544               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~576               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~608               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~640               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~672               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~704               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~736               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~768               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~800               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~832               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~864               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~896               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~928               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~960               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~992               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~515               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~547               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~579               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~611               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~643               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~675               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~707               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~739               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~771               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~803               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~835               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~867               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~899               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~931               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~963               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~995               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~516               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~548               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~580               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~612               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~644               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~676               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~708               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~740               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~772               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~804               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~836               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~868               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~900               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~932               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~964               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~996               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~513               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~545               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~577               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~609               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~641               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~673               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~705               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~737               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~769               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~801               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~833               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~865               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~897               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~929               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~961               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~993               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~514               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~546               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~578               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~610               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~642               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~674               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~706               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~738               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~770               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~802               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~834               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~866               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~898               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~930               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~962               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~994               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~543               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~575               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~607               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~639               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~671               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~703               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~735               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~767               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~799               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~831               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~863               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~895               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~927               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~959               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~991               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1023              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~542               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~574               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~606               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~638               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~670               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~702               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~734               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~766               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~798               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~830               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~862               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~894               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~926               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~958               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~990               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1022              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~541               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~573               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~605               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~637               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~669               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~701               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~733               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~765               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~797               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~829               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~861               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~893               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~925               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~957               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~989               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1021              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~540               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~572               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~604               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~636               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~668               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~700               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~732               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~764               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~796               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~828               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~860               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~892               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~924               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~956               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~988               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1020              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~539               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~571               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~603               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~635               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~667               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~699               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~731               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~763               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~795               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~827               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~859               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~891               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~923               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~955               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~987               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1019              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~538               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~570               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~602               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~634               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~666               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~698               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~730               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~762               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~794               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~826               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~858               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~890               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~922               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~954               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~986               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1018              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~537               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~569               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~601               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~633               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~665               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~697               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~729               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~761               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~793               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~825               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~857               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~889               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~921               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~953               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~985               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1017              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~536               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~568               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~600               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~632               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~664               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~696               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~728               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~760               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~792               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~824               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~856               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~888               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~920               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~952               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~984               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1016              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~535               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~567               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~599               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~631               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~663               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~695               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~727               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~759               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~791               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~823               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~855               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~887               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~919               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~951               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~983               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1015              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~534               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~566               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~598               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~630               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~662               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~694               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~726               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~758               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~790               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~822               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~854               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~886               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~918               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~950               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~982               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1014              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~533               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~565               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~597               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~629               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~661               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~693               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~725               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~757               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~789               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~821               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~853               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~885               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~917               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~949               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~981               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1013              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~532               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~564               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~596               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~628               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~660               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~692               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~724               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~756               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~788               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~820               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~852               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~884               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~916               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~948               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~980               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1012              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~531               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~563               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~595               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~627               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~659               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~691               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~723               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~755               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~787               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~819               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~851               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~883               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~915               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~947               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~979               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1011              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~530               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~562               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~594               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~626               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~658               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~690               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~722               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~754               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~786               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~818               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~850               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~882               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~914               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~946               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~978               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1010              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~529               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~561               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~593               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~625               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~657               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~689               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~721               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~753               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~785               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~817               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~849               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~881               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~913               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~945               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~977               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1009              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~528               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~560               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~592               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~624               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~656               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~688               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~720               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~752               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~784               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~816               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~848               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~880               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~912               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~944               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~976               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1008              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~527               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~559               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~591               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~623               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~655               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~687               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~719               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~751               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~783               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~815               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~847               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~879               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~911               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~943               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~975               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1007              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~526               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~558               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~590               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~622               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~654               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~686               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~718               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~750               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~782               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~814               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~846               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~878               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~910               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~942               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~974               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1006              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~525               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~557               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~589               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~621               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~653               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~685               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~717               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~749               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~781               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~813               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~845               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~877               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~909               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~941               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~973               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1005              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~524               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~556               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~588               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~620               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~652               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~684               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~716               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~748               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~780               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~812               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~844               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~876               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~908               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~940               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~972               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1004              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~523               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~555               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~587               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~619               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~651               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~683               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~715               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~747               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~779               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~811               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~843               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~875               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~907               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~939               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~971               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1003              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~522               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~554               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~586               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~618               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~650               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~682               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~714               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~746               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~778               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~810               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~842               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~874               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~906               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~938               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~970               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1002              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~521               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~553               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~585               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~617               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~649               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~681               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~713               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~745               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~777               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~809               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~841               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~873               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~905               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~937               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~969               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1001              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~520               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~552               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~584               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~616               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~648               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~680               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~712               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~744               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~776               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~808               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~840               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~872               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~904               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~936               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~968               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~1000              ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~519               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~551               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~583               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~615               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~647               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~679               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~711               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~743               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~775               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~807               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~839               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~871               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~903               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~935               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~967               ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~999               ; Stuck at GND due to stuck port data_in      ;
+; regshow:inst14|div[25..27]              ; Lost fanout                                 ;
+; debonce:inst2|div[19..25]               ; Lost fanout                                 ;
+; debonce:inst2|count[3]                  ; Stuck at GND due to stuck port data_in      ;
+; regster:inst3|regfile~294               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~38                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~326               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~70                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~134               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~390               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~358               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~230               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~102               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~486               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~68                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~324               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~228               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~484               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~291               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~35                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~323               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~67                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~131               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~387               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~355               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~227               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~99                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~483               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~288               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~32                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~320               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~64                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~128               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~384               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~352               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~224               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~96                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~480               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~69                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~325               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~229               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~485               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~129               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~225               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~321               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~289               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~353               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~65                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~33                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~97                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~385               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~481               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~290               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~34                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~322               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~66                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~130               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~386               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~226               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~354               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~98                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~482               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~293               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~37                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~133               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~389               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~357               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~101               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~292               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~356               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~132               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~36                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~100               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~388               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~318               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~62                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~350               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~94                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~158               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~414               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~382               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~254               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~126               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~510               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~157               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~253               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~349               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~317               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~381               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~93                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~61                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~125               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~413               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~509               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~348               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~92                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~316               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~60                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~156               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~412               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~252               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~380               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~124               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~508               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~315               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~347               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~379               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~155               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~251               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~59                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~91                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~123               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~411               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~507               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~314               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~58                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~346               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~90                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~154               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~410               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~378               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~250               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~122               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~506               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~153               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~249               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~345               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~313               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~377               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~89                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~57                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~121               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~409               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~505               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~336               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~80                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~304               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~48                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~144               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~400               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~240               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~368               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~112               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~496               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~145               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~241               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~337               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~305               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~369               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~81                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~49                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~113               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~401               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~497               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~332               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~76                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~300               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~44                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~140               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~396               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~236               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~364               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~108               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~492               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~307               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~339               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~371               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~147               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~243               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~51                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~83                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~115               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~403               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~499               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~306               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~50                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~338               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~82                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~146               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~402               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~370               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~242               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~114               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~498               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~141               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~237               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~333               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~301               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~365               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~77                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~45                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~109               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~397               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~493               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~302               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~46                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~334               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~78                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~142               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~398               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~366               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~238               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~110               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~494               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~303               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~335               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~367               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~143               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~239               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~47                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~79                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~111               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~399               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~495               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~319               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~63                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~351               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~95                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~159               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~415               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~383               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~255               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~127               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~511               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~139               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~235               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~331               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~299               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~363               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~75                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~43                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~107               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~395               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~491               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~330               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~74                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~298               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~42                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~138               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~394               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~234               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~362               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~106               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~490               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~297               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~329               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~361               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~137               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~233               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~41                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~73                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~105               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~393               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~489               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~296               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~40                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~328               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~72                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~136               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~392               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~360               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~232               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~104               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~488               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~135               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~231               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~327               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~295               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~359               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~71                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~39                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~103               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~391               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~487               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~344               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~88                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~312               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~56                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~152               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~408               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~248               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~376               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~120               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~504               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~311               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~343               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~375               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~151               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~247               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~55                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~87                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~119               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~407               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~503               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~310               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~54                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~342               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~86                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~150               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~406               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~374               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~246               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~118               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~502               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~149               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~245               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~341               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~309               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~373               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~85                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~53                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~117               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~405               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~501               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~340               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~84                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~308               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~52                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~148               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~404               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~244               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~372               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~116               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~500               ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~4                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~1                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~0                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~2                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~3                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~31                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~10                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~9                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~8                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~5                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~6                 ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~22                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~21                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~20                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~30                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~29                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~28                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~27                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~26                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~25                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~16                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~17                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~12                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~19                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~18                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~13                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~14                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~15                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~24                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~23                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~11                ; Stuck at GND due to stuck port clock_enable ;
+; regster:inst3|regfile~7                 ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 902 ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 610   ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 75    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 503   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |rv32i|regshow:inst14|Cont1[7]                ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |rv32i|regshow:inst14|Cont[16]                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |rv32i|regshow:inst14|LUT_DATA[7]             ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |rv32i|regshow:inst14|mLCD_DATA[0]            ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |rv32i|regshow:inst14|LUT_INDEX[0]            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |rv32i|regshow:inst14|LCD_Controller:u0|oDone ;
+; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |rv32i|regshow:inst14|mDLY[16]                ;
+; 66:1               ; 4 bits    ; 176 LEs       ; 96 LEs               ; 80 LEs                 ; Yes        ; |rv32i|regshow:inst14|LUT_DATA[3]             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |rv32i|decoder:inst4|Selector0                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |rv32i|decoder:inst4|Selector0                ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|Mux30                ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |rv32i|regshow:inst14|mLCD_ST                 ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |rv32i|MUX2to1_32bit:inst6|f[8]               ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |rv32i|MUX4to1_32bit:inst9|Mux2               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |rv32i|regshow:inst14|Mux1                    ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |rv32i|MUX2to1_32bit:inst6|f[22]              ;
+; 8:1                ; 9 bits    ; 45 LEs        ; 45 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|mem:mem_U|Mux16      ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|Mux3                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|Mux42                ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|Mux0                 ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|data_out_buff        ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |rv32i|dm_control:inst12|Mux21                ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 12 LEs               ; 18 LEs                 ; No         ; |rv32i|MUX2to1_32bit:inst6|f[30]              ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |rv32i|regshow:inst14|mLCD_ST                 ;
+; 20:1               ; 8 bits    ; 104 LEs       ; 64 LEs               ; 40 LEs                 ; No         ; |rv32i|alu:inst8|Selector17                   ;
+; 20:1               ; 8 bits    ; 104 LEs       ; 64 LEs               ; 40 LEs                 ; No         ; |rv32i|alu:inst8|Selector12                   ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |rv32i|MUX2to1_32bit:inst6|f[16]              ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |rv32i|MUX2to1_32bit:inst6|f[1]               ;
+; 21:1               ; 4 bits    ; 56 LEs        ; 32 LEs               ; 24 LEs                 ; No         ; |rv32i|alu:inst8|Selector24                   ;
+; 21:1               ; 4 bits    ; 56 LEs        ; 32 LEs               ; 24 LEs                 ; No         ; |rv32i|alu:inst8|Selector4                    ;
+; 22:1               ; 2 bits    ; 28 LEs        ; 18 LEs               ; 10 LEs                 ; No         ; |rv32i|alu:inst8|Selector28                   ;
+; 22:1               ; 2 bits    ; 28 LEs        ; 18 LEs               ; 10 LEs                 ; No         ; |rv32i|alu:inst8|Selector3                    ;
+; 23:1               ; 2 bits    ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; No         ; |rv32i|alu:inst8|Selector0                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regshow:inst14 ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; LUT_SIZE       ; 39    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regshow:inst14|LCD_Controller:u0 ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; CLK_Divide     ; 16    ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: showpc:inst10|lpm_divide:Mod0 ;
++------------------------+----------------+--------------------------------------+
+; Parameter Name         ; Value          ; Type                                 ;
++------------------------+----------------+--------------------------------------+
+; LPM_WIDTHN             ; 30             ; Untyped                              ;
+; LPM_WIDTHD             ; 4              ; Untyped                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                              ;
+; CBXI_PARAMETER         ; lpm_divide_1bm ; Untyped                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                       ;
++------------------------+----------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: showpc:inst10|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------+
+; Parameter Name         ; Value          ; Type                                 ;
++------------------------+----------------+--------------------------------------+
+; LPM_WIDTHN             ; 30             ; Untyped                              ;
+; LPM_WIDTHD             ; 4              ; Untyped                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                              ;
+; CBXI_PARAMETER         ; lpm_divide_uim ; Untyped                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                       ;
++------------------------+----------------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 62                          ;
+; cycloneiii_ff         ; 610                         ;
+;     CLR               ; 63                          ;
+;     ENA               ; 427                         ;
+;     ENA CLR           ; 12                          ;
+;     ENA SCLR          ; 64                          ;
+;     plain             ; 44                          ;
+; cycloneiii_lcell_comb ; 2394                        ;
+;     arith             ; 470                         ;
+;         2 data inputs ; 136                         ;
+;         3 data inputs ; 334                         ;
+;     normal            ; 1924                        ;
+;         0 data inputs ; 55                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 386                         ;
+;         3 data inputs ; 334                         ;
+;         4 data inputs ; 1136                        ;
+;                       ;                             ;
+; Max LUT depth         ; 66.70                       ;
+; Average LUT depth     ; 26.27                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+    Info: Processing started: Wed Jun 05 10:04:52 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rv32i -c rv32i
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file rv32i.bdf
+    Info (12023): Found entity 1: rv32i
+Info (12021): Found 1 design units, including 1 entities, in source file mux2to1_32bit.v
+    Info (12023): Found entity 1: MUX2to1_32bit
+Info (12021): Found 1 design units, including 1 entities, in source file mux4to1_32bit.v
+    Info (12023): Found entity 1: MUX4to1_32bit
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: alu
+Info (12021): Found 1 design units, including 1 entities, in source file branch.v
+    Info (12023): Found entity 1: branch
+Info (12021): Found 1 design units, including 1 entities, in source file decoder.v
+    Info (12023): Found entity 1: decoder
+Info (12021): Found 2 design units, including 2 entities, in source file dm_control.v
+    Info (12023): Found entity 1: dm_control
+    Info (12023): Found entity 2: mem
+Info (12021): Found 1 design units, including 1 entities, in source file instr_memory.v
+    Info (12023): Found entity 1: instr_memory
+Info (12021): Found 1 design units, including 1 entities, in source file pc.v
+    Info (12023): Found entity 1: pc
+Info (12021): Found 1 design units, including 1 entities, in source file regster.v
+    Info (12023): Found entity 1: regster
+Info (12021): Found 1 design units, including 1 entities, in source file debonce.v
+    Info (12023): Found entity 1: debonce
+Info (12021): Found 2 design units, including 2 entities, in source file showpc.v
+    Info (12023): Found entity 1: showpc
+    Info (12023): Found entity 2: segdec
+Info (12021): Found 1 design units, including 1 entities, in source file lcd_controller.v
+    Info (12023): Found entity 1: LCD_Controller
+Info (12021): Found 1 design units, including 1 entities, in source file regshow.v
+    Info (12023): Found entity 1: regshow
+Info (12021): Found 1 design units, including 1 entities, in source file inmem.v
+    Info (12023): Found entity 1: inmem
+Info (12127): Elaborating entity "rv32i" for the top level hierarchy
+Info (12128): Elaborating entity "regshow" for hierarchy "regshow:inst14"
+Warning (10230): Verilog HDL assignment warning at regshow.v(70): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at regshow.v(78): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at regshow.v(186): truncated value with size 32 to match size of target (28)
+Warning (10230): Verilog HDL assignment warning at regshow.v(195): truncated value with size 32 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at regshow.v(212): truncated value with size 32 to match size of target (20)
+Info (12128): Elaborating entity "LCD_Controller" for hierarchy "regshow:inst14|LCD_Controller:u0"
+Warning (10230): Verilog HDL assignment warning at LCD_Controller.v(66): truncated value with size 32 to match size of target (5)
+Info (12128): Elaborating entity "instr_memory" for hierarchy "instr_memory:inst11"
+Warning (10850): Verilog HDL warning at instr_memory.v(21): number of words (27) in memory file does not match the number of elements in the address range [0:27]
+Warning (10030): Net "INST_memory[27]" at instr_memory.v(7) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "pc" for hierarchy "pc:inst"
+Info (12128): Elaborating entity "debonce" for hierarchy "debonce:inst2"
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:inst4"
+Info (12128): Elaborating entity "branch" for hierarchy "branch:inst7"
+Warning (10230): Verilog HDL assignment warning at branch.v(13): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at branch.v(15): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at branch.v(17): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at branch.v(19): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at branch.v(21): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at branch.v(23): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "regster" for hierarchy "regster:inst3"
+Info (12128): Elaborating entity "MUX4to1_32bit" for hierarchy "MUX4to1_32bit:inst9"
+Info (12128): Elaborating entity "alu" for hierarchy "alu:inst8"
+Info (12128): Elaborating entity "MUX2to1_32bit" for hierarchy "MUX2to1_32bit:inst5"
+Info (12128): Elaborating entity "dm_control" for hierarchy "dm_control:inst12"
+Warning (10240): Verilog HDL Always Construct warning at dm_control.v(24): inferring latch(es) for variable "data_in_buff", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at dm_control.v(24): inferring latch(es) for variable "data_out_buff", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "data_out_buff[0]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[1]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[2]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[3]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[4]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[5]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[6]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[7]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[8]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[9]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[10]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[11]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[12]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[13]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[14]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[15]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[16]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[17]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[18]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[19]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[20]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[21]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[22]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[23]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[24]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[25]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[26]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[27]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[28]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[29]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[30]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_out_buff[31]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[0]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[1]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[2]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[3]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[4]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[5]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[6]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[7]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[8]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[9]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[10]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[11]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[12]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[13]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[14]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[15]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[16]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[17]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[18]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[19]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[20]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[21]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[22]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[23]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[24]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[25]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[26]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[27]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[28]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[29]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[30]" at dm_control.v(29)
+Info (10041): Inferred latch for "data_in_buff[31]" at dm_control.v(29)
+Info (12128): Elaborating entity "mem" for hierarchy "dm_control:inst12|mem:mem_U"
+Info (12128): Elaborating entity "showpc" for hierarchy "showpc:inst10"
+Warning (10230): Verilog HDL assignment warning at showpc.v(13): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at showpc.v(14): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "segdec" for hierarchy "showpc:inst10|segdec:segAA"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "regster:inst3|regfile" is uninferred due to asynchronous read logic
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "showpc:inst10|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "showpc:inst10|Div0"
+Info (12130): Elaborated megafunction instantiation "showpc:inst10|lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "showpc:inst10|lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "30"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_1bm.tdf
+    Info (12023): Found entity 1: lpm_divide_1bm
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_mlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_mlh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_07f.tdf
+    Info (12023): Found entity 1: alt_u_div_07f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12130): Elaborated megafunction instantiation "showpc:inst10|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "showpc:inst10|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "30"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_uim.tdf
+    Info (12023): Found entity 1: lpm_divide_uim
+Warning (13012): Latch dm_control:inst12|data_in_buff[31] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[30] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[29] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[28] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[27] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[26] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[25] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[24] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[23] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[22] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[21] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[20] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[19] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[18] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[17] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[16] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[15] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[14] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[13] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[12] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[11] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[10] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[9] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_in_buff[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[30] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[29] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[28] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[27] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[26] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[25] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[16] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[17] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[12] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[19] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[18] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[13] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[14] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[15] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[31] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[11] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[10] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[9] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[24] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[23] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[22] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[21] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13012): Latch dm_control:inst12|data_out_buff[20] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal pc:inst|pc[6]
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 18 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2902 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 57 output pins
+    Info (21061): Implemented 2840 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 148 warnings
+    Info: Peak virtual memory: 4849 megabytes
+    Info: Processing ended: Wed Jun 05 10:05:07 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:23
+
+
